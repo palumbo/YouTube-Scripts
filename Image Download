@@ -1,0 +1,15 @@
+function onOpen(e) {
+  let ui = SpreadsheetApp.getUi(); 
+  ui.createMenu('🤖 Automation')
+    .addItem('Insert Image', 'insertCellImage')
+    .addToUi(); 
+}
+
+function insertCellImage() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet(); 
+  const sheet = ss.getActiveSheet(); 
+  const image_range = sheet.getRange('A13'); 
+  let url = sheet.getRange("B1").getValue(); 
+  let image = SpreadsheetApp.newCellImage().setSourceUrl(url).build(); 
+  image_range.setValue(image); 
+}
