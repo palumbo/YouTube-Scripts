@@ -1,0 +1,24 @@
+function onEdit(e) {
+  let sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet(); 
+
+  // EVENT VARIABLES 
+  let range = e.range; 
+  let row = e.range.getRow(); 
+  let col = e.range.getColumn(); 
+  let cellValue = sheet.getActiveCell().getValue(); 
+
+  let projectName = sheet.getRange(row,1).getValue(); 
+  let user = Session.getActiveUser().getEmail(); 
+  let cellLocation = sheet.getActiveCell().getA1Notation(); 
+  let url = "https://docs.google.com/spreadsheets/d/1UZw5Tcvvd_C4ru3D3jF8p284SZHBD18U91pmhbbMzh0/edit#gid=0"
+
+  if ( col == 4 && cellValue == "Delayed") {
+    // Browser.msgBox('It works'); 
+    MailApp.sendEmail(
+      'p@lumbo.me',
+      user + ' set ' + projectName + ' to DELAYED!',
+      url + '&range=' + cellLocation
+    ); 
+  }; 
+
+}
