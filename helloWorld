@@ -1,0 +1,67 @@
+function onOpen(e) {
+  SpreadsheetApp.getUi()
+    .createMenu('My Functions')
+    .addItem('Hello World','helloWorld')
+    .addItem('Hello World Alert','helloWorldAlert')
+    .addItem('Hello World Large','helloWorldLarge')
+    .addToUi();
+}
+
+function helloWorld() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet(); 
+  const sheet = ss.getActiveSheet(); 
+  let target = sheet.getRange("A1"); 
+  target.setValue("Hello World"); 
+}
+
+function helloWorldAlert() {
+  // const ss = SpreadsheetApp.getActiveSpreadsheet(); 
+  // const sheet = ss.getActiveSheet(); 
+  Browser.msgBox("Hello World"); 
+}
+
+function helloWorldLarge() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet(); 
+  const sheet = ss.getActiveSheet(); 
+
+  sheet.setColumnWidths(1,26,60);
+  let h = sheet.getRangeList([
+    'C5:C21',
+    'D11:E12',
+    'F5:F21',
+    'H5:H21',
+    'I5:J5',
+    'I12:J12',
+    'I21:J21',
+    'L5:L21',
+    'M20:N21',
+    'P5:P21',
+    'Q20:R21',
+    'T5:T21',
+    'U5',
+    'U21',
+    'V5:V21',
+    'C25:C42',
+    'D42:F42',
+    'E33:E41',
+    'G25:G42',
+    'I25:I42',
+    'J25',
+    'J42',
+    'K25:K42',
+    'M25:M42',
+    'N25',
+    'O25:O32',
+    'N32',
+    'N35',
+    'O36:O42',
+    'Q25:Q42',
+    'R41:S42',
+    'U25:U42',
+    'V25',
+    'V42',
+    'W26:W41']); 
+  
+  // h.setValue('H');
+  h.setBackground('black');
+}
